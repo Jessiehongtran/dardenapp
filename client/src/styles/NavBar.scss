@@ -1,8 +1,22 @@
 .navBar {
-    background-color: white;
+    background-color: #FFFFFF;
+    padding: 0 60px 0 60px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 0 60px 0 60px;
+    align-items: flex-end;
     height: 76px;
+
+    .name {
+        color: #FF6666;
+        margin-bottom: 10px;
+        font-size: 35px;
+    }
+
+    .account {
+        text-decoration: none;
+        color: #FF6666;
+        margin-bottom: -5px;
+        font-size: 18px;
+        font-weight: bold;
+    }
 }

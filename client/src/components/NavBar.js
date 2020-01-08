@@ -10,8 +10,8 @@ const NavBar = () => {
             <h1 className="name">
                 DarDen.
             </h1>
-            <Link to="">
-                <p>Account</p>
+            <Link to="" className="account">
+                <p >Account</p>
             </Link>
         </div>
     )
