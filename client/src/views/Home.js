@@ -5,7 +5,7 @@ import '../styles/Home.scss';
 import {serviceCategories} from '../data/serviceCategory';
 
 
-const Home = () => {
+const Home = (props) => {
 
     return (
         <div className="home">
@@ -16,7 +16,13 @@ const Home = () => {
                 <div className="services">
                     {serviceCategories.map(service => {
                         return (
-                            <div className="each-service">
+                            <div 
+                                className="each-service" 
+                                onClick={() => {
+                                props.history.push('/booking')
+                                props.setServiceChosen(service)
+                                }
+                                }>
                                 <div className="icon">
                                     <img id="cleaning-icon" src={service.icon} alt="icon"/>
                             </div>
