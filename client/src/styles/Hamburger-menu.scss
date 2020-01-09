@@ -1,6 +1,6 @@
 .hamburger-menu {
-    margin: 30px;
-    position: absolute;
+    margin: 100px;
+    position: fixed;
     z-index: 1;
   
     span {
@@ -9,6 +9,7 @@
       height: 5px;
       display: block;
       margin-bottom: 5px;
+      margin-left: -38px;
     }
   }
   
@@ -20,7 +21,6 @@
     z-index: 1;
     top: 0;
     left: 0;
-    // background-color: #082B84;
     background-color: #F4F4F4;
     overflow-x: hidden;
     transition: 0.5s;
@@ -39,64 +39,45 @@
       height: 725px;
       color: rgba(11, 108, 138, 0.89);
       position: absolute;
-      // padding: 30px;
+    
   
       .name {
-        font-size: 16px;
+        font-size: 25px;
         margin-left: 20px;
-      }
-  
-      .email-address {
-        font-size: 12px;
-        margin-left: 20px;
+        margin-top: 0;
+        font-weight: bold;
       }
   
       .span {
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: #FF6666;
         display: block;
-        width: 214px;
+        width: 300px;
         height: 1px;
       }
   
-      .logo {
-        // width: 80%;
-        margin: -20px 0 10px 20px;
-        width: 170.81px;
-        height: 35.61px;
+      .avatar {
+        margin: 0 0 10px 20px;
+        width: 50%;
+        border-radius: 50%;
       }
     }
   
     .overlay-content-map {
       position: relative;
-      top: 18%;
+      margin-top: 200px;
       width: 100%;
       text-align: left;
-      // margin-top: 30px;
       color: rgba(11, 108, 138, 0.89);
-      //   padding-left: 30px;
-      //   margin: 0px;
-      //   margin-left: 10px;
-  
-      //   a:hover {
-      //       // background-color: rgba(48, 155, 242, 0.637);
-      //       // width: 194px;
-      //       // height: 30px;
-      //     //   color:#818181;
-  
-      //   }
   
       .eachNav {
         display: flex;
-        //   align-items: center;
-        //   align-self: flex-end;
         justify-items: space-evenly;
         width: 100%;
         padding-left: 30px;
         align-items: center;
-        //   margin-left: 10px;
       }
       .eachNav:hover {
-        background-color: #1c49bb;
+        background-color: #B6B2B1;
         color: rgba(11, 108, 138, 0.89);
       }
     }
@@ -104,16 +85,11 @@
     a {
       padding: 16px 0 16px 8px;
       text-decoration: none;
-      font-size: 20px;
-      color: rgba(11, 108, 138, 0.89);
+      font-size: 16px;
+      font-weight: bold;
+      color: #717171;
       display: block;
       transition: 0.3s;
       margin-top: 0px;
-      // text-align: center;
-  
-      //   :hover, :focus {
-      //       color: white;
-  
-      //     }
     }
   }

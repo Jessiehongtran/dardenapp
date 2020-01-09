@@ -6,7 +6,7 @@ const Menu = props => {
   console.log("props in Menu", props);
 
   const openNav = () => {
-    document.getElementById("myNav").style.width = "210px";
+    document.getElementById("myNav").style.width = "250px";
   };
 
   const closeNav = () => {
@@ -34,33 +34,21 @@ const Menu = props => {
         ></NavLink>
         <div className="intro">
           <img
-            className="logo"
-            src="https://res.cloudinary.com/dfulxq7so/image/upload/v1572403214/1ff21a300da2c00f0432c0b516f8492a_lzdqay.png"
-            alt="logo"
+            className="avatar"
+            src="https://res.cloudinary.com/dfulxq7so/image/upload/v1578598566/3ca14bfe2471e504eb115db7a2ff9a91_ll041q.jpg"
+            alt="avatar"
           />
-          <p className="name">Smarter Villages</p>
-          <p className="email-address">WellDone@WellDone.org</p>
+          <p className="name">Rodrigo Perez</p>
           <span className="span"></span>
         </div>
         <div className="overlay-content-map">
           <div class="eachNav">
-            {/* <IoIosHome size={25} /> */}
-            <NavLink to="/dashboard">Home</NavLink>
+            <NavLink to="/dashboard">Recent orders</NavLink>
           </div>
           <div className="eachNav">
-            {/* <IoMdCreate size={25} /> */}
-            <NavLink to="/overview">Overview</NavLink>
-          </div>
-          {/* <div className="eachNav">
-            <IoIosKey size={25} />
-            <a href="/admin">Admin</a>
-          </div> */}
-          <div className="eachNav">
-            {/* <IoIosSettings size={25} /> */}
-            <NavLink to="/settings">Settings</NavLink>
+            <NavLink to="/overview">Resources</NavLink>
           </div>
           <div className="eachNav">
-            {/* <FiLogOut size={25} /> */}
             <NavLink onClick={logout} to="/">
               Logout
             </NavLink>
