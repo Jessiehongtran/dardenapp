@@ -1,0 +1,51 @@
+body {
+    background-color: rgba(250, 120, 120, 0.42);
+    text-align: center;
+    
+    .signup-frame {
+        background-color: #FFFFFF;
+        width: 382px;
+        height: 285px;
+        border-radius: 12px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 16%;
+        padding: 20px;
+        
+        .welcome {
+            color: #FF6666;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .note {
+            color: #C7BABA;
+            font-size: 14px;
+        }
+
+        .field {
+            width: 221.26px;
+            height: 23px;
+            border: 2px solid rgba(11, 108, 138, 0.89);
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .error-message {
+            color: #FF6666;
+            font-style: italic;
+            font-size: 10px;
+            margin-top: 0
+        }
+
+        .signup-btn {
+            background-color: #FF6666;
+            width: 30%;
+            color: white;
+            font-size: 16px;
+            height: 34px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    }
+}

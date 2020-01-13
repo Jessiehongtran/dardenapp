@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import './App.css';
 import Home from './views/Home';
 import Booking from './views/Booking';
+import UserVerify from './views/UserVerify';
 
 function App() {
   const [serviceChosen, setServiceChosen] = useState({})
@@ -30,6 +31,16 @@ function App() {
                 <Booking 
                   {...props}
                   serviceChosen={serviceChosen}
+                />
+              )}}
+        />
+        <Route 
+          exact path="/verify" 
+          render = {
+            props => {
+              return (
+                <UserVerify 
+                  {...props}
                 />
               )}}
         />
