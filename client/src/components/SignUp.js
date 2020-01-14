@@ -1,7 +1,7 @@
 import React from 'react';
 import {withFormik, Form, Field, yupToFormErrors} from "formik";
 import * as Yup from "yup";
-import '../styles/SignUp.scss'
+import '../styles/SignUp.scss';
 
 const SignUp = ({errors}) => {
 

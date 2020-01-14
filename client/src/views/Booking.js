@@ -1,5 +1,8 @@
 import React from 'react';
 import '../styles/Booking.scss';
+import {withFormik, Form, Field} from 'formik';
+import LocationField from '../components/LocationField';
+
 
 const Booking = (props) => {
     console.log('props in Booking', props)
@@ -10,52 +13,35 @@ const Booking = (props) => {
                 <img src={props.serviceChosen.icon} alt="service-icon"/>
                 <p className="service-name">{props.serviceChosen.name}</p>
             </div>
-            <form>
-                <label>
-                    Work Description
-                    <input
-                        type="text"
-
-                    />
-                </label>
-                <label>
-                    Your Address
-                    <input
-                        type="text"
-                        
-                    />
-                </label>
-                <label>
-                    Describe Ideal Candidate
-                    <input
-                        type="text"
-                        
-                    />
-                </label>
-                <label>
-                    Estimated Number of Hours
-                    <input
-                        type="text"
-                        
-                    />
-                </label>
-                <label>
-                    Pay/hour
-                    <input
-                        type="text"
-                        
-                    />
-                </label>
-                <label>
-                    Your Contact
-                    <input
-                        type="text"
-                        
-                    />
-                </label>
-            </form>
+            <Form className="form">
+                <button className="book-btn">Book</button>
+                {/* <Field className="input" type="text" name="zipcode" placeholder="Zipcode"/> */}
+                <div className="work-info">
+                    <Field className="input" type="text" name="units" placeholder="Apt/Unit #"/>
+                    <Field className="input" type="text" name="hours" placeholder="# Hours"/>
+                </div>
+                <Field name="location" component={LocationField}/>
+                
+            </Form>
         </div>
     )
 }
 
-export default Booking;
+const FormikBooking = withFormik({
+    mapPropsToValues({location, zipcode, units, hours}){
+        return {
+            location: location || "",
+            zipcode: zipcode || "",
+            units: units || "",
+            hours: hours || ""
+        };
+    },
+
+    handleSubmit(values){
+        console.log(values)
+    }
+
+
+})(Booking)
+
+export default FormikBooking;
