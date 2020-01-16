@@ -7,12 +7,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node -r dotenv/config index.js",
     "server": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "airtable": "^0.8.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
