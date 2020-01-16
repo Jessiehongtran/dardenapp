@@ -12,7 +12,6 @@ server.use('/api/services', servicesRouter);
 server.use('/api/request', requestRouter);
 
 
-
 server.get('/', (req, res) => {
     res.send('Hello World')
 })
