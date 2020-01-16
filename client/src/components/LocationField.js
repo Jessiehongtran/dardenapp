@@ -12,6 +12,7 @@ export class LocationField extends React.PureComponent {
         const {form: {setValues, values}} = this.props;
         setValues({
             ...values,
+            address: suggest.description,
             latitude: lat,
             longitude: lng
         })

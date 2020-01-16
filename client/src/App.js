@@ -7,7 +7,9 @@ import UserVerify from './views/UserVerify';
 
 function App() {
   const [serviceChosen, setServiceChosen] = useState({})
+  const [bookingInfo, setBookingInfo] = useState({})
   console.log('check', serviceChosen)
+  console.log('bookingInfo', bookingInfo)
 
   return (
     <div className="App">
@@ -31,6 +33,7 @@ function App() {
                 <Booking 
                   {...props}
                   serviceChosen={serviceChosen}
+                  setBookingInfo = {setBookingInfo}
                 />
               )}}
         />

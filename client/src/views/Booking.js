@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/Booking.scss';
 import {withFormik, Form, Field} from 'formik';
 import LocationField from '../components/LocationField';
+import axios from 'axios';
 
 
 const Booking = (props) => {
@@ -39,6 +40,7 @@ const FormikBooking = withFormik({
 
     handleSubmit(values){
         console.log(values)
+        axios.post()
     }
 
 
