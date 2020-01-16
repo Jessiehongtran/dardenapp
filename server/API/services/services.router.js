@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Services = require("./services.model");
 
+// GET services
 router.get('/', (req, res) => {
     Services.findAll()
             .then(services => {
@@ -11,6 +12,19 @@ router.get('/', (req, res) => {
             })
 })
 
+// POST a service
+router.post('/', (req, res) => {
+    const service = req.body;
+    Services.addService(service)
+            .then(service => {
+                res.status(201).json(service)
+            })
+            .catch(err => {
+                res.status(500).json(err.message)
+            })
+})
+
+// POST to find service by name
 router.post('/find', (req,res) => {
     let serviceName = req.body.serviceName
     console.log(serviceName)

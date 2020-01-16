@@ -11,8 +11,14 @@ function findByName(name){
             .then(services => (services[0]))
 }
 
+function addService(service){
+    return db("services")
+            .insert(service)
+            .then(ids => ({id: ids[0]}))
+}
 
 module.exports = {
     findAll,
-    findByName
+    findByName,
+    addService
 }

@@ -12,9 +12,22 @@ function addRequest(request){
             .then(ids => ({id: ids[0]}))
 }
 
+function getRequestById(id){
+    return db("request_client")
+            .where({id})
+            .then(reqs => reqs[0])
+}
+
+function updateRequest(id, change){
+    return db("request_client")
+            .where({id})
+            .update(change);
+}
 
 
 module.exports = {
     findAll,
-    addRequest
+    addRequest,
+    getRequestById,
+    updateRequest
 }

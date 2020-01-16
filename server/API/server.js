@@ -7,7 +7,7 @@ const servicesRouter = require('./services/services.router');
 const requestRouter = require('./request_client/request.router');
 
 server.use(express.json());
-server.use('/api/client', clientRouter);
+server.use('/api/clients', clientRouter);
 server.use('/api/services', servicesRouter);
 server.use('/api/requests', requestRouter);
 
