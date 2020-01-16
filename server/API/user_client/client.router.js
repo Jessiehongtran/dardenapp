@@ -60,23 +60,23 @@ router.patch('/:id', (req, res) => {
 })
 
 // DELETE  a client
-router.delete('/:id', (req, res) => {
-    const {id} = req.params;
-    Clients.getClientById(id)
-            .then (client => {
-                if (client){
-                    Clients.removeClient(id)
-                    .then(count => {
-                        res.status(200).json({message: `deleted ${count} user`})
-                    })
-                    .catch(err => res.status(500).json(err.message))
-                } else {
-                    res.status(500).json({message: "user does not exist"})
-                }
+// router.delete('/:id', (req, res) => {
+//     const {id} = req.params;
+//     Clients.getClientById(id)
+//             .then (client => {
+//                 if (client){
+//                     Clients.removeClient(id)
+//                     .then(count => {
+//                         res.status(200).json({message: `deleted ${count} user`})
+//                     })
+//                     .catch(err => res.status(500).json(err.message))
+//                 } else {
+//                     res.status(500).json({message: "user does not exist"})
+//                 }
                 
-            })
-            .catch(err => res.status(500).json(err.message))
+//             })
+//             .catch(err => res.status(500).json(err.message))
 
-})
+// })
 
 module.exports = router;
