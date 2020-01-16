@@ -9,6 +9,13 @@ exports.up = function(knex) {
         .inTable("user_client")
         .onDelete("RESTRICT")
         .onDelete("RESTRICT")
+      column
+        .integer("service_id")
+        .unsigned()
+        .references("id")
+        .inTable("services")
+        .onDelete("RESTRICT")
+        .onDelete("RESTRICT")
       column.integer("unit");
       column.integer("hours").notNullable();
       column.string("address").notNullable();
