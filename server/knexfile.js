@@ -21,25 +21,12 @@ module.exports = {
     }
   },
 
-  // staging: {
-  //   client: 'sqlite3',
-  //   connection: {
-  //     database: 'database_file.db3',
-  //     user:     'username',
-  //     password: 'password'
-  //   },
-  //   pool: {
-  //     min: 2,
-  //     max: 10
-  //   },
-  //   migrations: {
-  //     tableName: 'database_file.db3'
-  //   }
-  // },
-
   production: {
     client: "pg",
     connection: process.env.DATABASE_URL,
+    // connection: {
+    //   filename: './data/database_file.db3'
+    // },
     migrations: {
       directory: "./data/migrations"
     },
