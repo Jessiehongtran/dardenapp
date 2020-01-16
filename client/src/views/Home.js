@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import NavBar from '../components/NavBar';
 import Menu from '../components/Hamburger-menu';
 import '../styles/Home.scss';
@@ -6,6 +7,16 @@ import {serviceCategories} from '../data/serviceCategory';
 
 
 const Home = (props) => {
+    const [services, setServices] = useState([])
+
+    useEffect(() => {
+        axios.get('https://darden-app.herokuapp.com/api/services')
+            .then(res =>
+                setServices(res.data))
+            .catch(err => {
+                console.log(err)
+            })
+    }, [])
 
     return (
         <div className="home">
@@ -14,9 +25,10 @@ const Home = (props) => {
             <div className="home-center">
                 <img className="banner" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1578436889/asasdasd_ls3sll.png" alt="banner"/>
                 <div className="services">
-                    {serviceCategories.map(service => {
+                    {services.map(service => {
                         return (
                             <div 
+                                key= {service.id}
                                 className="each-service" 
                                 onClick={() => {
                                 props.history.push('/booking')
@@ -24,12 +36,12 @@ const Home = (props) => {
                                 }
                                 }>
                                 <div className="icon">
-                                    <img id="cleaning-icon" src={service.icon} alt="icon"/>
+                                    <img id="cleaning-icon" src={service.service_icon} alt="icon"/>
                             </div>
                             <div className="text">
-                                <p>{service.name}</p>
+                                <p>{service.service_name}</p>
                             </div>
-                    </div>
+                            </div>
                         )
                     })}
                 </div>
