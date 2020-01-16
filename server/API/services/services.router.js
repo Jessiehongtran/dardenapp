@@ -12,6 +12,19 @@ router.get('/', (req, res) => {
             })
 })
 
+// GET service by id
+router.get('/:id', (req, res) => {
+    const {id} = req.params
+    Services.getServiceById(id)
+            .then(service => {
+                res.status(200).json(service)
+            })
+            .catch(err => {
+                res.status(500).json(err.message)
+            })
+})
+
+
 // POST a service
 router.post('/', (req, res) => {
     const service = req.body;
