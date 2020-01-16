@@ -1,4 +1,5 @@
 // Update with your config settings.
+require('dotenv').config({path: 'path_to_env_file'});
 
 module.exports = {
 
@@ -23,10 +24,12 @@ module.exports = {
 
   production: {
     client: "pg",
-    connection: process.env.DATABASE_URL,
-    // connection: {
-    //   filename: './data/database_file.db3'
-    // },
+    connection: {
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME
+    },
     migrations: {
       directory: "./data/migrations"
     },
