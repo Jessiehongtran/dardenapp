@@ -17,8 +17,16 @@ function addService(service){
             .then(ids => ({id: ids[0]}))
 }
 
+function removeService(id){
+    return db("services")
+            .where({id})
+            .first()
+            .del()
+}
+
 module.exports = {
     findAll,
     findByName,
-    addService
+    addService,
+    removeService
 }

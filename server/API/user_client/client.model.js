@@ -23,9 +23,17 @@ function updateClient(id, change){
             .update(change);
 }
 
+function removeClient(id){
+    return db("user_client")
+            .where({id})
+            .first()
+            .del()
+}
+
 module.exports = {
     findAll,
     getClientById,
     updateClient,
-    addClient
+    addClient,
+    removeClient
 }

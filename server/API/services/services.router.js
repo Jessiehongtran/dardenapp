@@ -41,5 +41,26 @@ router.post('/find', (req,res) => {
             })
 })
 
+// DELETE a service
+router.delete('/:id', (req, res) => {
+    const {id} = req.params;
+    Services.getClientById(id)
+            .then (client => {
+                if (client){
+                    Services.removeService(id)
+                    .then(count => {
+                        res.status(200).json({message: `deleted ${count} service`})
+                    })
+                    .catch(err => res.status(500).json(err.message))
+                } else {
+                    res.status(500).json({message: "service does not exist"})
+                }
+                
+            })
+            .catch(err => res.status(500).json(err.message))
+
+})
+
+
 
 module.exports = router;
