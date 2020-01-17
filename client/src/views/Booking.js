@@ -1,18 +1,33 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import '../styles/Booking.scss';
 import {withFormik, Form, Field} from 'formik';
 import LocationField from '../components/LocationField';
 import axios from 'axios';
+import {connect} from 'react-redux';
 
 
 const Booking = (props) => {
     console.log('props in Booking', props)
+    const [serviceClicked, setServiceClicked] = useState({})
+
+    const id = localStorage.getItem('serviceId')
+
+    useEffect(() => {
+        axios.get(`https://darden-app.herokuapp.com/api/services/${id}`)
+            .then(res =>
+                setServiceClicked(res.data))
+            .catch(err => {
+                console.log(err)
+            })
+    }, [])
+
+    console.log('here', serviceClicked)
 
     return (
         <div className="booking">
             <div>
-                <img src={props.serviceChosen.icon} alt="service-icon"/>
-                <p className="service-name">{props.serviceChosen.name}</p>
+                <img src={serviceClicked.service_icon} alt="service-icon"/>
+                <p className="service-name">{serviceClicked.service_name}</p>
             </div>
             <Form className="form">
                 <button className="book-btn">Book</button>
@@ -46,4 +61,17 @@ const FormikBooking = withFormik({
 
 })(Booking)
 
-export default FormikBooking;
+
+const mapStateToProps = state => {
+    console.log('state in Booking', state)
+    return {
+        isLoading: state.isLoading,
+        clickedService: state.clickedService,
+        error: state.error
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    {}
+)(FormikBooking);

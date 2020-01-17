@@ -3,10 +3,12 @@ import axios from 'axios';
 import NavBar from '../components/NavBar';
 import Menu from '../components/Hamburger-menu';
 import '../styles/Home.scss';
-import {serviceCategories} from '../data/serviceCategory';
+import {getClickedService} from '../actions/index';
+import {connect} from 'react-redux';
 
 
 const Home = (props) => {
+    console.log('props in home', props)
     const [services, setServices] = useState([])
 
     useEffect(() => {
@@ -33,6 +35,8 @@ const Home = (props) => {
                                 onClick={() => {
                                 props.history.push('/booking')
                                 props.setServiceChosen(service)
+                                localStorage.setItem('serviceId', service.id)
+                                props.getClickedService(service.id)
                                 }
                                 }>
                                 <div className="icon">
@@ -50,4 +54,16 @@ const Home = (props) => {
     )
 }
 
-export default Home;
+const mapStateToProps = state => {
+    console.log('state in Home', state)
+    return {
+        isLoading: state.isLoading,
+        clickedService: state.clickedService,
+        error: state.error
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    {getClickedService}
+)(Home);
