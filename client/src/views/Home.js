@@ -20,6 +20,8 @@ const Home = (props) => {
             })
     }, [])
 
+    const userToken = localStorage.getItem('token')
+
     return (
         <div className="home">
             <NavBar />
@@ -33,7 +35,7 @@ const Home = (props) => {
                                 key= {service.id}
                                 className="each-service" 
                                 onClick={() => {
-                                props.history.push('/booking')
+                                props.history.push('/verify')
                                 props.setServiceChosen(service)
                                 localStorage.setItem('serviceId', service.id)
                                 props.getClickedService(service.id)

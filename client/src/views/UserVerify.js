@@ -1,12 +1,14 @@
 import React from 'react';
-import FormikSignUp from '../components/SignUp';
+import SignUp from '../components/SignUp';
 import * as Yup from "yup";
 
-const UserVerify = () => {
-
+const UserVerify = (props) => {
+    console.log('props in userverify', props)
     return (
         <div>
-            <FormikSignUp/>
+            <SignUp
+                history={props.history}
+            />
         </div>
     )
 }

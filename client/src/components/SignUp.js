@@ -3,14 +3,21 @@ import {withFormik, Form, Field, yupToFormErrors} from "formik";
 import * as Yup from "yup";
 import '../styles/SignUp.scss';
 
-const SignUp = ({errors}) => {
-
+const SignUp = (props) => {
+    const {
+        values,
+        touched,
+        errors,
+        setFieldValue,
+        setFieldTouched,
+      } = props;
+    console.log('props in signup', props)
     return (
         <div className="signup-frame">
             <div className="text">
                 <p className="welcome">Hello! Welcome to DarDen.</p>
-                <p className="welcome">Looks like your first time here, that's awesome!</p>
-                <p className="note">Create a password to book your first service.</p>
+                <p className="welcome">Looks like you are excited to get some work done!</p>
+                <p className="note">Please fill out some information to get started.</p>
             </div>
             <Form>
                 <div>
@@ -21,7 +28,13 @@ const SignUp = ({errors}) => {
                     <Field className="field" type="password" name="password" placeholder="Password"/>
                     {errors.password && <p className="error-message">{errors.password}</p>}
                 </div>
-                <button className="signup-btn">Next</button>
+                <button 
+                    className="signup-btn"
+                    onClick={() => {
+                        props.history.push('/booking')}}
+                    >
+                        Next
+                </button>
             </Form>
         </div>
     )
@@ -29,7 +42,8 @@ const SignUp = ({errors}) => {
 
 const FormikSignUp = withFormik({
 
-    mapPropsToValues({email, password}){
+    mapPropsToValues({email, password}, props){
+        console.log('herrrr', props)
         return {
             email: email || "",
             password: password || ""
