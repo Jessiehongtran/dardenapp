@@ -36,6 +36,7 @@ function getRequestById(id){
                 "request_client.address",
                 "request_client.created_at"
                 )
+            .returning("*")
             .then(reqs => reqs[0])
 }
 
