@@ -8,8 +8,9 @@ function findAll(){
 function addRequest(request){
     console.log(request)
     return db('request_client')
+            .returning("id")
             .insert(request)
-            .then(ids => ({id: ids[0]}))
+            .then(ids => {return {id: ids[0]}})
 }
 
 function getRequestById(id){
