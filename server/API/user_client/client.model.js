@@ -4,6 +4,10 @@ function findAll(){
     return db("user_client")
 }
 
+function findBy(filter){
+    return db("user_client").where(filter)
+}
+
 function getClientById(id){
     return db("user_client")
             .where({id})
@@ -34,6 +38,7 @@ function removeClient(id){
 
 module.exports = {
     findAll,
+    findBy,
     getClientById,
     updateClient,
     addClient,

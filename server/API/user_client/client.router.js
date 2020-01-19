@@ -1,5 +1,8 @@
 const router = require("express").Router();
-const Clients = require("./client.model")
+const Clients = require("./client.model");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const secrets = require('../../secrets/secret');
 
 // GET clients
 router.get('/', (req, res) => {
@@ -26,9 +29,11 @@ router.get('/:id', (req, res) => {
 })
 
 
-// POST a client
-router.post('/', (req, res) => {
+// POST a client for signup
+router.post('/signup', (req, res) => {
     const client = req.body
+    const hash = bcrypt.hashSync(client.password, 12)
+    client.password = hash
     Clients.addClient(client)
             .then(id => {
                 console.log('id check', id)
@@ -38,6 +43,40 @@ router.post('/', (req, res) => {
                 res.status(500).json(err.message)
             })
 })
+
+// POST a client for login
+router.post('/login', (req, res) => {
+    let {email, password} = req.body;
+
+    Clients.findBy({email})
+           .first()
+           .then(user => {
+               if (user && bcrypt.compareSync(password, user.password)){
+                   const token = generateToken(user);
+                   res.status(200).json({
+                       message: `Welcome ${user.email}`, 
+                       token
+                   })
+               } else {
+                   res.status(401).json({message: 'Invalid Credentials'});
+               }
+           })
+           .catch(err => {
+               res.status(500).json(err);
+           })
+})
+
+function generateToken(user){
+    const payload = {
+        email: user.email,
+    };
+    const options = {
+        expiresIn: '1d'
+    };
+    return jwt.sign(payload, secrets.jwtSecret, options)
+}
+
+
 
 // PATCH update a client
 router.patch('/:id', (req, res) => {
