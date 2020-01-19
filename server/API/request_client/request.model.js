@@ -25,6 +25,7 @@ function addRequest(request){
 
 function getRequestById(id){
     return db("request_client")
+            .returning("*")
             .where("request_client.id", id)
             .join("services", "services.id", "request_client.service_id")
             .join("user_client", "user_client.id", "request_client.user_id")
@@ -36,7 +37,6 @@ function getRequestById(id){
                 "request_client.address",
                 "request_client.created_at"
                 )
-            .returning("*")
             .then(reqs => reqs[0])
 }
 
