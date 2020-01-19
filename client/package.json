@@ -12,6 +12,7 @@
     "google-maps-react": "^2.0.2",
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
+    "react-compose": "^2.0.0",
     "react-dom": "^16.12.0",
     "react-geosuggest": "^2.12.1",
     "react-google-location": "^1.2.2",

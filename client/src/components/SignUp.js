@@ -1,32 +1,10 @@
 import React from 'react';
-import {withFormik, Form, Field, yupToFormErrors} from "formik";
+import {withFormik, Form, Field} from "formik";
 import * as Yup from "yup";
 import '../styles/SignUp.scss';
 import axios from 'axios';
 
-const SignUp = (props) => {
-    const {
-        // values,
-        // touched,
-        errors,
-        // setFieldValue,
-        // setFieldTouched,
-      } = props;
-    console.log('props in signup', props)
-
-    // console.log('values', values)
-
-
-    // const handleSubmit = () => {
-    //     console.log('in', values)
-    //     axios.post(`https://darden-app.herokuapp.com/api/clients`, values)
-    //          .then(res => {
-    //              console.log('res', res)
-    //          })
-    //          .catch(err => {
-    //              console.log(err.message)
-    //          })
-    //         }
+const SignUp = ({errors}) => {
 
     return (
         <div className="signup-frame">
@@ -46,9 +24,6 @@ const SignUp = (props) => {
                 </div>
                 <button 
                     className="signup-btn"
-                    // onClick={handleSubmit()}
-                    // onClick={() => {
-                    //     props.history.push('/summary')}}
                     >
                         Next
                 </button>
@@ -59,33 +34,35 @@ const SignUp = (props) => {
 
 const FormikSignUp = withFormik({
 
-    mapPropsToValues({email, password}){
-        return {
-            email: email || "",
-            password: password || ""
+        mapPropsToValues({email, password}){
+            return {
+                email: email || "",
+                password: password || ""
+            }
+        },
+
+        validationSchema: Yup.object().shape({
+            email: Yup.string()
+                .email()
+                .required(),
+            password: Yup.string()
+                .min(6)
+                .required()
+        }),
+
+        handleSubmit(values, {props}){
+            axios.post(`https://darden-app.herokuapp.com/api/clients`, values)
+                .then(res => {
+                    localStorage.setItem('userId', res.data.id)
+                    props.history.push('/summary')
+                })
+                .catch(err => {
+                    console.log(err.message)
+                })
+                
         }
-    },
-
-    validationSchema: Yup.object().shape({
-        email: Yup.string()
-            .email()
-            .required(),
-        password: Yup.string()
-            .min(6)
-            .required()
-    }),
-
-    handleSubmit(values){
-        console.log(values)
-        axios.post(`https://darden-app.herokuapp.com/api/clients`, values)
-             .then(res => {
-                 console.log('res', res)
-             })
-             .catch(err => {
-                 console.log(err.message)
-             })
-             
     }
-})(SignUp)
+    
+)(SignUp)
 
 export default FormikSignUp;
