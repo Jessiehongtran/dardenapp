@@ -4,7 +4,10 @@ import * as Yup from "yup";
 import '../styles/SignUp.scss';
 import axios from 'axios';
 
-const SignUp = ({errors}) => {
+const SignUp = ({errors, touched, handleBlur}) => {
+    console.log('errors' + errors)
+    console.log('touched' + touched)
+    console.log('handleBlur' + handleBlur)
 
     return (
         <div className="signup-frame">
@@ -22,11 +25,7 @@ const SignUp = ({errors}) => {
                     <Field className="field" type="password" name="password" placeholder="Password"/>
                     {errors.password && <p className="error-message">{errors.password}</p>}
                 </div>
-                <button 
-                    className="signup-btn"
-                    >
-                        Next
-                </button>
+                <button className="signup-btn">Next</button>
             </Form>
         </div>
     )
@@ -44,6 +43,23 @@ const FormikSignUp = withFormik({
         validationSchema: Yup.object().shape({
             email: Yup.string()
                 .email()
+                .test({
+                    name: 'duplicate-email-check',
+                    params: 'value',
+                    message: 'Email already exists please use another email or login',
+                    test: async (value) => {
+                        axios
+                            .post('https://darden-app.herokuapp.com/api/clients/checkemail', value)
+                            .then(emailReturned => {
+                                if (emailReturned === "email"){
+                                    return true
+                                } else {
+                                    return false
+                                }
+                            })
+                            .catch(err => console.log(err))
+                    }
+                })
                 .required(),
             password: Yup.string()
                 .min(6)
@@ -51,7 +67,7 @@ const FormikSignUp = withFormik({
         }),
 
         handleSubmit(values, {props}){
-            axios.post(`https://darden-app.herokuapp.com/api/clients`, values)
+            axios.post(`https://darden-app.herokuapp.com/api/clients/signup`, values)
                 .then(res => {
                     localStorage.setItem('userId', res.data.id)
                     props.history.push('/summary')
