@@ -31,6 +31,7 @@ router.post('/', (req, res) => {
     const client = req.body
     Clients.addClient(client)
             .then(id => {
+                console.log('id check', id)
                 res.status(200).json(id)
             })
             .catch(err => {
