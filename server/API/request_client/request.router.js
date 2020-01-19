@@ -17,6 +17,7 @@ router.post('/', (req, res) => {
     const request = req.body;
     Requests.addRequest(request)
             .then(request => {
+                console.log('request', request)
                 res.status(201).json(request)
             }
             )
