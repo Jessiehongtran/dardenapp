@@ -4,6 +4,7 @@ import './App.css';
 import Home from './views/Home';
 import Booking from './views/Booking';
 import UserVerify from './views/UserVerify';
+import Summary from './views/Summary';
 
 function App() {
   const [serviceChosen, setServiceChosen] = useState({})
@@ -43,6 +44,16 @@ function App() {
             props => {
               return (
                 <UserVerify 
+                  {...props}
+                />
+              )}}
+        />
+        <Route 
+          exact path="/summary" 
+          render = {
+            props => {
+              return (
+                <Summary
                   {...props}
                 />
               )}}

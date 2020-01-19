@@ -4,6 +4,7 @@ import {withFormik, Form, Field} from 'formik';
 import LocationField from '../components/LocationField';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import {getBookingInfo} from '../actions/index';
 
 
 const Booking = (props) => {
@@ -30,7 +31,14 @@ const Booking = (props) => {
                 <p className="service-name">{serviceClicked.service_name}</p>
             </div>
             <Form className="form">
-                <button className="book-btn">Book</button>
+                <button 
+                    className="book-btn"
+                    onClick={() => {
+                        props.history.push('/verify')
+                    }}
+                    >
+                    Book
+                </button>
                 {/* <Field className="input" type="text" name="zipcode" placeholder="Zipcode"/> */}
                 <div className="work-info">
                     <Field className="input" type="text" name="units" placeholder="Apt/Unit #"/>
@@ -56,6 +64,7 @@ const FormikBooking = withFormik({
     handleSubmit(values){
         console.log(values)
         axios.post(``)
+       
     }
 
 
@@ -66,12 +75,12 @@ const mapStateToProps = state => {
     console.log('state in Booking', state)
     return {
         isLoading: state.isLoading,
-        clickedService: state.clickedService,
+        bookingInfo: state.bookingInfo,
         error: state.error
     }
 }
 
 export default connect(
     mapStateToProps,
-    {}
+    {getBookingInfo}
 )(FormikBooking);

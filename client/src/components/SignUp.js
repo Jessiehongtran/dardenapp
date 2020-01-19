@@ -2,22 +2,38 @@ import React from 'react';
 import {withFormik, Form, Field, yupToFormErrors} from "formik";
 import * as Yup from "yup";
 import '../styles/SignUp.scss';
+import axios from 'axios';
 
 const SignUp = (props) => {
     const {
-        values,
-        touched,
+        // values,
+        // touched,
         errors,
-        setFieldValue,
-        setFieldTouched,
+        // setFieldValue,
+        // setFieldTouched,
       } = props;
     console.log('props in signup', props)
+
+    // console.log('values', values)
+
+
+    // const handleSubmit = () => {
+    //     console.log('in', values)
+    //     axios.post(`https://darden-app.herokuapp.com/api/clients`, values)
+    //          .then(res => {
+    //              console.log('res', res)
+    //          })
+    //          .catch(err => {
+    //              console.log(err.message)
+    //          })
+    //         }
+
     return (
         <div className="signup-frame">
             <div className="text">
                 <p className="welcome">Hello! Welcome to DarDen.</p>
                 <p className="welcome">Looks like you are excited to get some work done!</p>
-                <p className="note">Please fill out some information to get started.</p>
+                <p className="note">Please fill out some information to proceed.</p>
             </div>
             <Form>
                 <div>
@@ -30,8 +46,9 @@ const SignUp = (props) => {
                 </div>
                 <button 
                     className="signup-btn"
-                    onClick={() => {
-                        props.history.push('/booking')}}
+                    // onClick={handleSubmit()}
+                    // onClick={() => {
+                    //     props.history.push('/summary')}}
                     >
                         Next
                 </button>
@@ -42,8 +59,7 @@ const SignUp = (props) => {
 
 const FormikSignUp = withFormik({
 
-    mapPropsToValues({email, password}, props){
-        console.log('herrrr', props)
+    mapPropsToValues({email, password}){
         return {
             email: email || "",
             password: password || ""
@@ -61,6 +77,14 @@ const FormikSignUp = withFormik({
 
     handleSubmit(values){
         console.log(values)
+        axios.post(`https://darden-app.herokuapp.com/api/clients`, values)
+             .then(res => {
+                 console.log('res', res)
+             })
+             .catch(err => {
+                 console.log(err.message)
+             })
+             
     }
 })(SignUp)
 

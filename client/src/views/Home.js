@@ -3,8 +3,7 @@ import axios from 'axios';
 import NavBar from '../components/NavBar';
 import Menu from '../components/Hamburger-menu';
 import '../styles/Home.scss';
-import {getClickedService} from '../actions/index';
-import {connect} from 'react-redux';
+
 
 
 const Home = (props) => {
@@ -35,10 +34,9 @@ const Home = (props) => {
                                 key= {service.id}
                                 className="each-service" 
                                 onClick={() => {
-                                props.history.push('/verify')
-                                props.setServiceChosen(service)
+                                props.history.push('/booking')
+                                // props.setServiceChosen(service)
                                 localStorage.setItem('serviceId', service.id)
-                                props.getClickedService(service.id)
                                 }
                                 }>
                                 <div className="icon">
@@ -56,16 +54,4 @@ const Home = (props) => {
     )
 }
 
-const mapStateToProps = state => {
-    console.log('state in Home', state)
-    return {
-        isLoading: state.isLoading,
-        clickedService: state.clickedService,
-        error: state.error
-    }
-}
-
-export default connect(
-    mapStateToProps,
-    {getClickedService}
-)(Home);
+export default Home;

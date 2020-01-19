@@ -1,25 +1,25 @@
-import {FETCHING_SERVICES_LOADING, FETCHING_SERVICES_SUCCESS} from '../actions/index';
+import {BOOKING_LOADING, BOOKING_SUCCESS} from '../actions/index';
 
 const initialState = {
     isLoading: false,
-    clickedService: [],
+    bookingInfo: [],
     error: ''
 }
 
-export const fetchServices = (state=initialState, action) => {
+export const submitBooking = (state=initialState, action) => {
     switch(action.type){
-        case FETCHING_SERVICES_LOADING:
+        case BOOKING_LOADING:
             return {
                 ...state,
                 isLoading: true,
                 error: ''
             }
 
-        case FETCHING_SERVICES_SUCCESS:
+        case BOOKING_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
-                clickedService: action.payload,
+                bookingInfo: action.payload,
                 error: ''
             }
         

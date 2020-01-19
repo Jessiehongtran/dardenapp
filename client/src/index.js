@@ -7,10 +7,10 @@ import * as serviceWorker from './serviceWorker';
 import {applyMiddleware, createStore} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
-import {fetchServices} from './reducers/fetchReducer';
+// import {fetchServices} from './reducers/fetchReducer';
 
 let store = createStore(
-    fetchServices,
+    // fetchServices,
     applyMiddleware(thunk)
     )
 
