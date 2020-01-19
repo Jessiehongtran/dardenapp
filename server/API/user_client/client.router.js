@@ -28,6 +28,24 @@ router.get('/:id', (req, res) => {
             })
 })
 
+// POST to check email for signup
+router.post('/checkemail', (req, res) => {
+    const {email} = req.body
+    Clients.findBy({email})
+           .first()
+           .then(user => {
+               if (user && user.email == email){
+                res.status(200).json(user.email)
+               } else {
+                res.status(401).json({message: 'No such email found'});
+               }
+           })
+           .catch(err => {
+            res.status(500).json(err);
+            })
+})
+
+
 
 // POST a client for signup
 router.post('/signup', (req, res) => {
