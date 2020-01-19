@@ -16,8 +16,9 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     const {id} = req.params
     Requests.getRequestById(id)
-            .then(service => {
-                res.status(200).json(service)
+            .then(response => {
+                console.log('response in getRequestById', response)
+                res.status(200).json(response)
             })
             .catch(err => {
                 res.status(500).json(err.message)

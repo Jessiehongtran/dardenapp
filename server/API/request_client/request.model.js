@@ -29,15 +29,16 @@ function getRequestById(id){
             .where("request_client.id", id)
             .join("services", "services.id", "request_client.service_id")
             .join("user_client", "user_client.id", "request_client.user_id")
-            .select(
+            .select([
                 "user_client.email", 
                 "services.service_name", 
                 "request_client.unit",
                 "request_client.hours",
                 "request_client.address",
                 "request_client.created_at"
+            ]
                 )
-            .then(reqs => reqs[0])
+            // .then(response => console.log('r', response))
 }
 
 function updateRequest(id, change){
