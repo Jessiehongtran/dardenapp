@@ -33,7 +33,7 @@ function App() {
               return (
                 <Booking 
                   {...props}
-                  serviceChosen={serviceChosen}
+                  serviceChosen= {serviceChosen}
                   setBookingInfo = {setBookingInfo}
                 />
               )}}
@@ -45,6 +45,7 @@ function App() {
               return (
                 <UserVerify 
                   {...props}
+                  bookingInfo = {bookingInfo}
                 />
               )}}
         />

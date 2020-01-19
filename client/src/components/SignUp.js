@@ -3,11 +3,9 @@ import {withFormik, Form, Field} from "formik";
 import * as Yup from "yup";
 import '../styles/SignUp.scss';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
-const SignUp = ({errors, touched, handleBlur}) => {
-    console.log('errors' + errors)
-    console.log('touched' + touched)
-    console.log('handleBlur' + handleBlur)
+const SignUp = ({errors}) => {
 
     return (
         <div className="signup-frame">
@@ -27,6 +25,7 @@ const SignUp = ({errors, touched, handleBlur}) => {
                 </div>
                 <button className="signup-btn">Next</button>
             </Form>
+            <Link to=""><p className="login-tag">Login</p></Link>
         </div>
     )
 }
@@ -43,23 +42,25 @@ const FormikSignUp = withFormik({
         validationSchema: Yup.object().shape({
             email: Yup.string()
                 .email()
-                .test({
-                    name: 'duplicate-email-check',
-                    params: 'value',
-                    message: 'Email already exists please use another email or login',
-                    test: async (value) => {
-                        axios
-                            .post('https://darden-app.herokuapp.com/api/clients/checkemail', value)
-                            .then(emailReturned => {
-                                if (emailReturned === "email"){
-                                    return true
-                                } else {
-                                    return false
-                                }
-                            })
-                            .catch(err => console.log(err))
-                    }
-                })
+                // .test({
+                //     name: 'duplicate-email-check',
+                //     params: 'value',
+                //     // message: 'Email already exists please use another email or login',
+                //     test:  async (value) => {
+                //         console.log('value', value)
+                //         axios
+                //             .post('https://darden-app.herokuapp.com/api/clients/checkemail', value)
+                //             .then(emailReturned => {
+                //                 console.log('emailReturned', emailReturned)
+                //                 if (emailReturned){
+                //                     return 
+                //                 } else {
+                //                     return false
+                //                 }
+                //             })
+                //             .catch(err => console.log(err))
+                //     }
+                // })
                 .required(),
             password: Yup.string()
                 .min(6)
@@ -71,6 +72,22 @@ const FormikSignUp = withFormik({
                 .then(res => {
                     localStorage.setItem('userId', res.data.id)
                     props.history.push('/summary')
+                    console.log('props in signup', props)
+                    // These following should be moved to payment later on
+                    const userId = localStorage.getItem('userId')
+                    const serviceId = localStorage.getItem('serviceId')
+                    const bookingRequest = {
+                        user_id: userId,
+                        service_id: serviceId,
+                        unit: props.bookingInfo.units,
+                        hours: props.bookingInfo.hours,
+                        address: props.bookingInfo.address
+                    }
+                    axios.post(`https://darden-app.herokuapp.com/api/requests`, bookingRequest)
+                         .then(res => {
+                             console.log('res after post bookingRequest', res)
+                         })
+                         .catch(err => console.log(err.message))
                 })
                 .catch(err => {
                     console.log(err.message)

@@ -16,9 +16,9 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     const request = req.body;
     Requests.addRequest(request)
-            .then(request => {
-                console.log('request', request)
-                res.status(201).json(request)
+            .then(response => {
+                console.log('request', response)
+                res.status(201).json(response)
             }
             )
             .catch(err => {

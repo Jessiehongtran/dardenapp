@@ -7,8 +7,8 @@ import {connect} from 'react-redux';
 import {getBookingInfo} from '../actions/index';
 
 
-const Booking = (props) => {
-    console.log('props in Booking', props)
+const Booking = () => {
+    // console.log('props in Booking', props)
     const [serviceClicked, setServiceClicked] = useState({})
 
     const id = localStorage.getItem('serviceId')
@@ -31,14 +31,7 @@ const Booking = (props) => {
                 <p className="service-name">{serviceClicked.service_name}</p>
             </div>
             <Form className="form">
-                <button 
-                    className="book-btn"
-                    onClick={() => {
-                        props.history.push('/verify')
-                    }}
-                    >
-                    Book
-                </button>
+                <button className="book-btn">Book</button>
                 {/* <Field className="input" type="text" name="zipcode" placeholder="Zipcode"/> */}
                 <div className="work-info">
                     <Field className="input" type="text" name="units" placeholder="Apt/Unit #"/>
@@ -61,10 +54,11 @@ const FormikBooking = withFormik({
         };
     },
 
-    handleSubmit(values){
+    handleSubmit(values, {props}){
         console.log(values)
-        axios.post(``)
-       
+        console.log('props in booking', props)
+        props.setBookingInfo(values)
+        props.history.push('/verify')
     }
 
 

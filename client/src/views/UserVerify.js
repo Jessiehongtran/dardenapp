@@ -8,6 +8,7 @@ const UserVerify = (props) => {
         <div>
             <SignUp
                 history={props.history}
+                bookingInfo={props.bookingInfo}
             />
         </div>
     )
