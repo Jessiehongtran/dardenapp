@@ -38,7 +38,7 @@ function getRequestById(id){
                 "request_client.created_at"
             ]
                 )
-            // .then(response => console.log('r', response))
+            .then(response => console.log('r', response))
 }
 
 function updateRequest(id, change){
