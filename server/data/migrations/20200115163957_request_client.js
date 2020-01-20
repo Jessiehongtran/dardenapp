@@ -19,6 +19,7 @@ exports.up = function(knex) {
       column.integer("unit");
       column.integer("hours").notNullable();
       column.string("address").notNullable();
+      column.integer("price").notNullable();
       column.timestamp('created_at').defaultTo(knex.fn.now());
   })
 };
