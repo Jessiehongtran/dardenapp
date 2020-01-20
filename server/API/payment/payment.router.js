@@ -1,9 +1,13 @@
 const router = require("express").Router();
 const stripe = require('stripe')('sk_test_hUaCZqgcFBl9qGN8kSF9EkWz002TofxCyY');
 
+
+
 router.post('/', async (req, res) => {
     try {
         const {amount, source, receipt_email} = req.body
+
+        console.log(amount, source, receipt_email)
 
         const charge = await stripe.charges.create({
             amount,
@@ -11,6 +15,8 @@ router.post('/', async (req, res) => {
             source,
             receipt_email
         })
+
+        console.log('charge', charge)
 
         if (!charge) throw new Error('charge unsuccessfuk')
 
