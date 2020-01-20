@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const stripe = require('stripe')('sk_test_hUaCZqgcFBl9qGN8kSF9EkWz002TofxCyY');
 
-
-
 router.post('/', async (req, res) => {
     try {
         const {amount, source, receipt_email} = req.body
