@@ -81,7 +81,8 @@ const FormikSignUp = withFormik({
                         service_id: serviceId,
                         unit: props.bookingInfo.units,
                         hours: props.bookingInfo.hours,
-                        address: props.bookingInfo.address
+                        address: props.bookingInfo.address,
+                        
                     }
                     axios.post(`https://darden-app.herokuapp.com/api/requests`, bookingRequest)
                          .then(res => {

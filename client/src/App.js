@@ -5,11 +5,10 @@ import Home from './views/Home';
 import Booking from './views/Booking';
 import UserVerify from './views/UserVerify';
 import Summary from './views/Summary';
+import Checkout from './views/Checkout';
 
 function App() {
-  const [serviceChosen, setServiceChosen] = useState({})
   const [bookingInfo, setBookingInfo] = useState({})
-  console.log('check', serviceChosen)
   console.log('bookingInfo', bookingInfo)
 
   return (
@@ -22,7 +21,6 @@ function App() {
               return (
                 <Home 
                   {...props}
-                  setServiceChosen={setServiceChosen}
                 />
               )}}
         />
@@ -33,7 +31,6 @@ function App() {
               return (
                 <Booking 
                   {...props}
-                  serviceChosen= {serviceChosen}
                   setBookingInfo = {setBookingInfo}
                 />
               )}}
@@ -56,6 +53,18 @@ function App() {
               return (
                 <Summary
                   {...props}
+                  bookingInfo = {bookingInfo}
+                />
+              )}}
+        />
+         <Route 
+          exact path="/checkout" 
+          render = {
+            props => {
+              return (
+                <Checkout
+                  {...props}
+                  bookingInfo = {bookingInfo}
                 />
               )}}
         />

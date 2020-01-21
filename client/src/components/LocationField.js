@@ -16,7 +16,7 @@ export class LocationField extends React.PureComponent {
             latitude: lat,
             longitude: lng
         })
-        console.log(suggest)
+        console.log('values', this.props)
     }
 
 

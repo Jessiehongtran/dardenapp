@@ -8,7 +8,6 @@ import {getBookingInfo} from '../actions/index';
 
 
 const Booking = () => {
-    // console.log('props in Booking', props)
     const [serviceClicked, setServiceClicked] = useState({})
 
     const id = localStorage.getItem('serviceId')
@@ -32,10 +31,10 @@ const Booking = () => {
             </div>
             <Form className="form">
                 <button className="book-btn">Book</button>
-                {/* <Field className="input" type="text" name="zipcode" placeholder="Zipcode"/> */}
                 <div className="work-info">
                     <Field className="input" type="text" name="units" placeholder="Apt/Unit #"/>
                     <Field className="input" type="text" name="hours" placeholder="# Hours"/>
+                    <Field className="input" type="text" name="price" placeholder="$ Price/hour: 0.00"/>
                 </div>
                 <Field name="location" component={LocationField}/>
                 
@@ -45,17 +44,18 @@ const Booking = () => {
 }
 
 const FormikBooking = withFormik({
-    mapPropsToValues({location, zipcode, units, hours}){
+    mapPropsToValues({location, address, units, hours, price}){
         return {
             location: location || "",
-            zipcode: zipcode || "",
+            address: address || "",
             units: units || "",
-            hours: hours || ""
+            hours: hours || "",
+            price: price || ""
         };
     },
 
     handleSubmit(values, {props}){
-        console.log(values)
+        console.log('address check again', values.address)
         console.log('props in booking', props)
         props.setBookingInfo(values)
         props.history.push('/verify')

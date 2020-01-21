@@ -7,13 +7,13 @@ import * as serviceWorker from './serviceWorker';
 import {applyMiddleware, createStore} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
+import 'babel-polyfill';
 // import {fetchServices} from './reducers/fetchReducer';
 
 let store = createStore(
     // fetchServices,
     applyMiddleware(thunk)
     )
-
 
 ReactDOM.render(
     <Provider store={store}>
