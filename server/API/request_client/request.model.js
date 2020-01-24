@@ -17,7 +17,7 @@ function findAll(){
 
 function addRequest(request){
     return db('request_client')
-            .returning("id")
+            .returning("request_id")
             .insert(request)
             .then(ids => {return {id: ids[0]}})
 }
