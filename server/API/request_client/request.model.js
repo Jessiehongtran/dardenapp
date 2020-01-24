@@ -16,7 +16,6 @@ function findAll(){
 }
 
 function addRequest(request){
-    console.log(request)
     return db('request_client')
             .returning("id")
             .insert(request)
@@ -25,6 +24,7 @@ function addRequest(request){
 
 function getRequestById(id){
     return db("request_client")
+            .where(id)
             .join("services", "services.id", "request_client.service_id")
             .join("user_client", "user_client.id", "request_client.user_id")
             .select(
@@ -35,21 +35,7 @@ function getRequestById(id){
                 "request_client.address",
                 "request_client.created_at"
             )
-            .where("request_client.id", id)
-            
-           
-            // .join("services", "services.id", "request_client.service_id")
-            // .join("user_client", "user_client.id", "request_client.user_id")
-            // .select(
-            //     "user_client.email", 
-            //     "services.service_name", 
-            //     "request_client.unit",
-            //     "request_client.hours",
-            //     "request_client.address",
-            //     "request_client.created_at"
-            // )
-            // .where("request_client.id", id)
-            
+             
 }
 
 function updateRequest(id, change){

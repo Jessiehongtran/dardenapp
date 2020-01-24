@@ -1,7 +1,7 @@
 
 exports.up = function(knex) {
   return knex.schema.createTable("request_client", column => {
-      column.increments();
+      column.increments("request_id");
       column
         .integer("user_id")
         .unsigned()
@@ -17,9 +17,9 @@ exports.up = function(knex) {
         .onDelete("RESTRICT")
         .onDelete("RESTRICT")
       column.integer("unit");
-      column.integer("hours").notNullable();
+      column.float("hours").notNullable();
       column.string("address").notNullable();
-      column.integer("price").notNullable();
+      column.float("price").notNullable();
       column.timestamp('created_at').defaultTo(knex.fn.now());
   })
 };

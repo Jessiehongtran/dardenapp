@@ -4,8 +4,9 @@ const Requests = require("./request.model");
 // GET requests
 router.get('/', (req, res) => {
     Requests.findAll()
-            .then(services => {
-                res.status(200).json(services)
+            .then(requests => {
+                console.log('all', requests)
+                res.status(200).json(requests)
             })
             .catch(err => {
                 res.status(500).json(err.message)
@@ -15,7 +16,7 @@ router.get('/', (req, res) => {
 // GET request by id
 router.get('/:id', (req, res) => {
     const {id} = req.params
-    Requests.getRequestById(id)
+    Requests.getRequestById({request_id: id})
             .then(response => {
                 console.log('response in getRequestById', response)
                 res.status(200).json(response)
