@@ -1,5 +1,4 @@
 import React from 'react';
-import {FieldProps} from 'formik';
 import Geosuggest from 'react-geosuggest';
 import '../styles/LocationField.css';
 import {Map, GoogleApiWrapper, Marker} from 'google-maps-react';

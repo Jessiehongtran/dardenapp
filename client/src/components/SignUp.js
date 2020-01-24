@@ -87,6 +87,7 @@ const FormikSignUp = withFormik({
                     axios.post(`https://darden-app.herokuapp.com/api/requests`, bookingRequest)
                          .then(res => {
                              console.log('res after post bookingRequest', res)
+                             localStorage.setItem('requestId', res.data.id)
                          })
                          .catch(err => console.log(err.message))
                 })

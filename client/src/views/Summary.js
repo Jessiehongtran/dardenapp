@@ -14,7 +14,8 @@ const Summary = (props) => {
                  setServiceClicked(res.data)
              })
              .catch(err => console.log(err.message))
-    }, [])
+        
+    }, [serviceId])
 
     console.log('serviceClicked', serviceClicked)
 

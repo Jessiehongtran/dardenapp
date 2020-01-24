@@ -1,0 +1,56 @@
+.role-frame {
+    background-color: #FFFFFF;
+    width: 382px;
+    height: 300px;
+    border-radius: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 16%;
+    padding: 100px 20px 0px 20px;
+
+    p{
+        font-size: 24px;
+        span {
+            color:  #FF6666;
+        }
+
+    }
+    
+
+    .client-btn {
+        background-color: #FF6666;
+        width: 30%;
+        color: white;
+        font-size: 16px;
+        height: 34px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        border: 1px solid #FF6666;
+        margin-right: 20px;
+    }
+
+    .client-btn:hover {
+        background-color: white;
+        color: #FF6666;
+    }
+
+    .dardie-btn {
+        background-color: while;
+        width: 30%;
+        color: #FF6666;
+        font-size: 16px;
+        height: 34px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        border: 1px solid #FF6666;
+    }
+
+    .dardie-btn:hover {
+        background-color: #FF6666;
+        color: white;
+
+        
+    }
+}

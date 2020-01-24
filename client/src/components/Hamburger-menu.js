@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/Hamburger-menu.scss";
 import { Redirect, NavLink } from "react-router-dom";
 
