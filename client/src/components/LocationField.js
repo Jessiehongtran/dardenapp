@@ -8,11 +8,13 @@ import {Map, GoogleApiWrapper, Marker} from 'google-maps-react';
 export class LocationField extends React.PureComponent {
 
     onSuggestSelect = (suggest) => {
-        const {location: {lat, lng}} = suggest;
+        // console.log('suggest', suggest)
+        // console.log('address')
+        const {location: {lat, lng}, label} = suggest;
         const {form: {setValues, values}} = this.props;
         setValues({
             ...values,
-            address: suggest.description,
+            address: label,
             latitude: lat,
             longitude: lng
         })

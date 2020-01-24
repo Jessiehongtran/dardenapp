@@ -55,8 +55,6 @@ const FormikBooking = withFormik({
     },
 
     handleSubmit(values, {props}){
-        console.log('address check again', values.address)
-        console.log('props in booking', props)
         props.setBookingInfo(values)
         props.history.push('/verify')
     }

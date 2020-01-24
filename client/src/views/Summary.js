@@ -4,7 +4,7 @@ import '../styles/Summary.scss';
 
 
 const Summary = (props) => {
-    console.log('props in Summary', props)
+    const address =  props.bookingInfo.address
     const [serviceClicked, setServiceClicked] = useState({})
 
     const serviceId = localStorage.getItem('serviceId')
@@ -27,7 +27,7 @@ const Summary = (props) => {
             <img src={serviceClicked.service_icon} alt="icon"/>
             <p>Service:  {serviceClicked.service_name}</p>
             <p>Apt/Unit #: {props.bookingInfo.units}</p>
-            <p>Address: {props.bookingInfo.addresss}</p>
+            <p>Address: {address}</p>
             <p># Hours: {props.bookingInfo.hours}</p>
             <p>$ Price/hour: {props.bookingInfo.price}</p>
             <button

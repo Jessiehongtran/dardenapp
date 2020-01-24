@@ -10,7 +10,7 @@ import Checkout from './views/Checkout';
 function App() {
   const [bookingInfo, setBookingInfo] = useState({})
   console.log('bookingInfo', bookingInfo)
-
+  
   return (
     <div className="App">
       <Switch>
