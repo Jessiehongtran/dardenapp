@@ -11,6 +11,7 @@ function findAll(){
                 "request_client.unit",
                 "request_client.hours",
                 "request_client.address",
+                "request_client.price",
                 "request_client.created_at"
                 )
 }
@@ -33,6 +34,7 @@ function getRequestById(id){
                 "request_client.unit",
                 "request_client.hours",
                 "request_client.address",
+                "request_client.price",
                 "request_client.created_at"
             )
              
