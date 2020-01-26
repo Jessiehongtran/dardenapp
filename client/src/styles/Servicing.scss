@@ -1,14 +1,25 @@
 .servicing {
     text-align: center;
+    background-color: #FFFFFF;
+    width: 382px;
+    height: 300px;
+    border-radius: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 16%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 
     img {
-        width: 10%;
+        width: 30%;
     }
 
     form {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
+    margin-left: 100px;
 
         .role-type{
             display: flex;
