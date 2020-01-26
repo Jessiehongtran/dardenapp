@@ -65,7 +65,7 @@ const Servicing = () => {
                 </div>
                 <input type="text" name="name" placeholder="Your full name" onChange={e => handleChange(e)}/>
                 <input type="email" name="email" placeholder="Your email" onChange={e => handleChange(e)}/>
-                <input type="text" name="phoneNumber" placeholder="Your phone number" onChange={e => handleChange(e)}/>
+                <input type="tel" name="phoneNumber" placeholder="Your phone number" onChange={e => handleChange(e)}/>
                 <Geosuggest
                         placeholder="Your address"
                         onSuggestSelect={onSuggestSelect}
