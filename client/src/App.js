@@ -7,6 +7,7 @@ import UserVerify from './views/UserVerify';
 import Summary from './views/Summary';
 import Checkout from './views/Checkout';
 import Role from './views/Role';
+import Servicing from './views/Servicing';
 
 function App() {
   const [bookingInfo, setBookingInfo] = useState({})
@@ -33,6 +34,16 @@ function App() {
                 <Role 
                   {...props}
                  
+                />
+              )}}
+        />
+         <Route 
+          exact path="/servicing" 
+          render = {
+            props => {
+              return (
+                <Servicing 
+                  {...props}
                 />
               )}}
         />

@@ -18,6 +18,7 @@ const Role = (props) => {
                     Client
             </button>
             <button 
+                onClick={() => props.history.push('/servicing')}
                 className="dardie-btn">
                 Dardie
             </button>
