@@ -82,19 +82,20 @@ const Servicing = () => {
             <form onSubmit={e => handleSubmit(e)}>
                 <div className="role-type">
                     <p>Are you:</p>
-                    <label> 
-                        <input className="role" type="radio" name="radAnswer" value="business" onChange={e => handleSelect(e)}/>
-                        Business
-                    </label>
-                    <label> 
-                        <input className="role" type="radio" name="radAnswer" value="individual" onChange={e => handleSelect(e)}/>
-                        Individual
-                    </label>
+                    <div className="role">
+                        <input type="radio" name="radAnswer" value="business" onChange={e => handleSelect(e)}/>
+                        <label>Business</label>
+                    </div>
+                        
+                    <div className="role">
+                        <input type="radio" name="radAnswer" value="individual" onChange={e => handleSelect(e)}/>
+                        <label>Individual</label>
+                    </div>
                 </div>
                 <div>
                     <input type="text" name="name" placeholder="Your full name" onChange={e => handleChange(e)}/>
                     <input type="email" name="email" placeholder="Your email" onChange={e => handleChange(e)}/>
-                    <input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="XXX-XXX-XXXX"  required placeholder="Your phone number" onChange={e => handleChange(e)}/>
+                    <input type="tel" name="phoneNumber" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" title="Ten digit codes"  required placeholder="Your phone number" onChange={e => handleChange(e)}/>
                     <Geosuggest
                             placeholder="Your address"
                             onSuggestSelect={onSuggestSelect}
