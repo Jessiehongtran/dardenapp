@@ -48,7 +48,9 @@ const Servicing = () => {
             name: profile.name,
             email: profile.email,
             phoneNumber: profile.phoneNumber,
-            address: profile.address
+            address: profile.address,
+            latitude: profile.latitude,
+            longitude: profile.longitude
         }
 
         axios.post('https://darden-app.herokuapp.com/api/dardies', profileToPost)

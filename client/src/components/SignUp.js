@@ -82,6 +82,8 @@ const FormikSignUp = withFormik({
                         unit: props.bookingInfo.units,
                         hours: props.bookingInfo.hours,
                         address: props.bookingInfo.address,
+                        latitude: props.bookingInfo.latitude,
+                        longitude: props.bookingInfo.longitude,
                         price: props.bookingInfo.price
                     }
                     axios.post(`https://darden-app.herokuapp.com/api/requests`, bookingRequest)
