@@ -19,8 +19,10 @@ exports.up = function(knex) {
       column.integer("unit");
       column.float("hours").notNullable();
       column.string("address").notNullable();
+      column.float("latitude").notNullable();
+      column.float("longitude").notNullable();
       column.float("price").notNullable();
-      column.timestamp('created_at').defaultTo(knex.fn.now());
+      column.timestamp("created_at").defaultTo(knex.fn.now());
   })
 };
 

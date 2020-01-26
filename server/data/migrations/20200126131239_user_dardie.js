@@ -14,6 +14,9 @@ exports.up = function(knex) {
         column.string('email').notNullable();
         column.string('phoneNumber').notNullable();
         column.string('address').notNullable();
+        column.float("latitude").notNullable();
+        column.float("longitude").notNullable();
+        column.timestamp('created_at').defaultTo(knex.fn.now());
     })
 };
 
