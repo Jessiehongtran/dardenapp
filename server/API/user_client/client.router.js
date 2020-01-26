@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const secrets = require('../../secrets/secret');
 
-// GET clients
+// GET all clients
 router.get('/', (req, res) => {
     Clients.findAll()
             .then(clients => {
