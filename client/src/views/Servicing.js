@@ -7,17 +7,18 @@ import {Link} from 'react-router-dom';
 const Servicing = () => {
     const [serviceClicked, setServiceClicked] = useState({})
     const [profile, setProfile] = useState({})
+    const [dardieId, setDardieId] = useState()
 
-    const id = localStorage.getItem('serviceId')
+    const serviceId = localStorage.getItem('serviceId')
 
     useEffect(() => {
-        axios.get(`https://darden-app.herokuapp.com/api/services/${id}`)
+        axios.get(`https://darden-app.herokuapp.com/api/services/${serviceId}`)
             .then(res =>
                 setServiceClicked(res.data))
             .catch(err => {
                 console.log(err)
             })
-    }, [id])
+    }, [serviceId])
 
     const handleChange = event => {
         setProfile({...profile, [event.target.name]: event.target.value})
@@ -41,21 +42,36 @@ const Servicing = () => {
     const handleSubmit = event => {
         event.preventDefault()
         console.log('profile', profile)
+        const profileToPost = {
+            service_id: serviceId,
+            role: profile.role,
+            name: profile.name,
+            email: profile.email,
+            phoneNumber: profile.phoneNumber,
+            address: profile.address
+        }
+
+        axios.post('https://darden-app.herokuapp.com/api/dardies', profileToPost)
+             .then(res => {
+                 console.log('res in servicing', res)
+                 setDardieId(res.data.id)
+             })
+             .catch(err => console.log(err.message))
     }
 
 
     const google= window.google
 
-    // after post dardie, if there is id returned, show this screen
-    // if (id){
-    //     return (
-    //         <div className="success">
-    //             <h2>You are on queue, our team will contact you soon!</h2>
-    //             <Link to="/">Home</Link>
-    //         </div>
-    //     )
+    // after post dardie successfully, if there is id returned, show this screen
+    if (dardieId){
+        return (
+            <div className="success">
+                <h2>You are on board successfully, our team will contact you soon!</h2>
+                <Link to="/" className="link-to">Home</Link>
+            </div>
+        )
 
-    // }
+    }
 
     return (
         <div className="servicing">

@@ -73,3 +73,24 @@
         }
     }
 }
+
+.success {
+    padding-top: 200px;
+    background-color: #FFFFFF;
+    width: 382px;
+    height: 300px;
+    border-radius: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 16%;
+    padding: 20px;
+
+    h2 {
+        color:  #FF6666;
+    }
+
+    .link-to {
+        text-decoration-color: black;
+        color: black
+    }
+}
