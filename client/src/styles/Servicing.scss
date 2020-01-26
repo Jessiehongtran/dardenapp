@@ -31,16 +31,19 @@
 
         .role-type{
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-between;
             align-items: center;
             width: 100%;
 
             .role {
-                display: flex;
-                align-items: center;
-                justify-content: space-evenly;
-                width: 100%;
-                margin-right: 20px
+                // display: flex;
+                // align-items: center;
+                // justify-content: center;
+                // width: 100%;
+
+                // label {
+                //     padding-left: -20px;
+                // }
 
             }
            
