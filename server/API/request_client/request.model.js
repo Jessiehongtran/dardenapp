@@ -3,8 +3,8 @@ const db = require('../../data/dbConfig');
 
 function findAll(){
     return db("request_client")
-            .join("services", "services.id", "request_client.service_id")
-            .join("user_client", "user_client.id", "request_client.user_id")
+            .join("services", "services.service_id", "request_client.service_id")
+            .join("user_client", "user_client.client_id", "request_client.user_id")
             .select(
                 "user_client.email", 
                 "services.service_name", 
@@ -28,8 +28,8 @@ function addRequest(request){
 function getRequestById(id){
     return db("request_client")
             .where(id)
-            .join("services", "services.id", "request_client.service_id")
-            .join("user_client", "user_client.id", "request_client.user_id")
+            .join("services", "services.service_id", "request_client.service_id")
+            .join("user_client", "user_client.client_id", "request_client.user_id")
             .select(
                 "user_client.email", 
                 "services.service_name", 

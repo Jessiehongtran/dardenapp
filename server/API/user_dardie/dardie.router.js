@@ -24,6 +24,18 @@ router.get('/:id', (req, res) => {
             })
 })
 
+// GET dardies by serviceId
+router.get('/serviceId/:serviceId', (req, res) => {
+    const {serviceId} = req.params
+    Dardies.getDardiesByServiceId(serviceId)
+            .then(dardies => {
+                res.status(200).json(dardies)
+            })
+            .catch(err => {
+                res.status(500).json(err.message)
+            })
+})
+
 
 // POST a dardie
 router.post('/', (req, res) => {

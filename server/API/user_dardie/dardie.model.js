@@ -2,7 +2,7 @@ const db = require('../../data/dbConfig');
 
 function findAll(){
     return db("user_dardie")
-            .join("services", "services.id", "user_dardie.service_id")
+            .join("services", "services.service_id", "user_dardie.service_id")
             .select(
                 "services.service_name", 
                 "user_dardie.*",
@@ -12,11 +12,16 @@ function findAll(){
 function getDardieById(id){
     return db("user_dardie")
             .where({dardie_id: id})
-            .join("services", "services.id", "user_dardie.service_id")
+            .join("services", "services.service_id", "user_dardie.service_id")
             .select(
                 "services.service_name", 
                 "user_dardie.*",
                 )
+}
+
+function getDardiesByServiceId(id){
+    return db("services")
+            .where({})
 }
 
 function addDardie(dardie){
@@ -29,5 +34,6 @@ function addDardie(dardie){
 module.exports = {
     findAll,
     getDardieById,
+    getDardiesByServiceId,
     addDardie
 }

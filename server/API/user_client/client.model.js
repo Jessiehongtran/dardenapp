@@ -16,7 +16,7 @@ function getClientById(id){
 
 function addClient(client){
     return db("user_client")
-            .returning("id")
+            .returning("client_id")
             .insert(client)
             .then(ids => {return {id: ids[0]}})
 }
