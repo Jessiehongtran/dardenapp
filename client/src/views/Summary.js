@@ -20,7 +20,7 @@ const Summary = (props) => {
     console.log('serviceClicked', serviceClicked)
 
     const handlePurchase = prod => () => {
-        props.history.push('/checkout')
+        props.history.push('/matching')
     }
 
     return (
@@ -34,7 +34,7 @@ const Summary = (props) => {
             <button
                 className="summary-btn" 
                 onClick={handlePurchase(props.bookingInfo)}
-            >Pay</button>
+            >See matches</button>
         </div>
     )
 }

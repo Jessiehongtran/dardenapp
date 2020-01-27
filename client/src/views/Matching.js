@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
-const Matching = () => {
+const Matching = (props) => {
     const [clientRequest, setClientRequest] = useState({});
     const [dardies, setDardies] = useState([])
 
@@ -104,13 +105,40 @@ const Matching = () => {
         bestMatchArr.push(bestMatch)
         veryBestMatchArr.push(veryBestMatch)
     }
+
+    else {
+        return (
+            <div>
+                <h2>We have not found any dardie matching with your request at this moment, our team will be in touch with you.</h2>
+                <Link to="/">Home</Link>
+            </div>
+        )
+    }
     
     console.log('matches', matches)
     console.log('bestMatchArr', bestMatchArr)
     console.log('veryBestMatchArr', veryBestMatchArr)
 
     return (
-        <div></div>
+        <div>
+            <div className="best-match">
+                <p>Best match</p>
+                <h2>We found a dardie close to you</h2>
+                <p>Name: {bestMatchArr[0].name}</p>
+                <p>Address: {bestMatchArr[0].address}</p>
+            </div>
+            <div className="best-match">
+                <p>Very best match</p>
+                <h2>We found a dardie close to you and have been active recently</h2>
+                <p>Name: {veryBestMatchArr[0].name}</p>
+                <p>Address: {veryBestMatchArr[0].address}</p>
+            </div>
+            <button
+                onClick={() => props.history.push('/checkout')}
+            >
+                Proceed to payment
+            </button>
+        </div>
     )
     
 }

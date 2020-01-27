@@ -6,7 +6,7 @@ import '../styles/CheckoutForm.scss';
 
 const CheckoutForm = ({bookingInfo, stripe, history}) => {
     if (bookingInfo === null){
-        history.push('/product')
+        history.push('/')
     }
 
     console.log(bookingInfo)
