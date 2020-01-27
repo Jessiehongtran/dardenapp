@@ -7,6 +7,7 @@ const Matching = () => {
 
     const matches = []
     const bestMatchArr = []
+    const veryBestMatchArr = []
 
     const requestId = localStorage.getItem('requestId')
     const serviceId = localStorage.getItem('serviceId')
@@ -33,7 +34,7 @@ const Matching = () => {
 
     console.log(dardies)
 
-    // To find closest distance
+    // To find distance
     const distance = (lat1, lon1, lat2, lon2, unit) => {
         if ((lat1 == lat2) && (lon1 == lon2)) {
             return 0;
@@ -55,6 +56,21 @@ const Matching = () => {
             return dist;
         }
     }
+
+    // To find time duration
+    const duration = (formatedTime1, formatedTime2) => {
+        const time1 = new Date(formatedTime1)
+        const time2 = new Date(formatedTime2)
+        const yearGap = Math.abs(time1.getFullYear() - time2.getFullYear())
+        const monthGap = Math.abs(time1.getMonth() - time2.getMonth())
+        const dateGap = Math.abs(time1.getDate() - time2.getDate())
+        const hourGap = Math.abs(time1.getHours() - time2.getHours())
+        const minGap = Math.abs(time1.getMinutes() - time2.getMinutes())
+        const secGap = Math.abs(time1.getSeconds() - time2.getSeconds())
+        console.log('duration', yearGap*365*24*60*60 + monthGap*30*24*60*60 + dateGap*24*60*60 + hourGap*60*60 + minGap*60 + secGap)
+        return yearGap*365*24*60*60 + monthGap*30*24*60*60 + dateGap*24*60*60 + hourGap*60*60 + minGap*60 + secGap
+
+    }
     
     // GET matches if same service 
     for (let i=0; i<dardies.length; i++){
@@ -69,21 +85,29 @@ const Matching = () => {
     if (matches.length > 0){
         let closestDist = distance(matches[0].latitude, matches[0].longitude, clientRequest.latitude, clientRequest.longitude, "N")
         let bestMatch = matches[0]
+        let closestDuration = duration(matches[0].created_at, clientRequest.created_at)
+        let veryBestMatch = matches[0]
         for (let i=1; i<matches.length; i++){
-            if (matches[i].service_id == clientRequest.id){
-                    if (distance(matches[i].latitude, matches[i].longitude, clientRequest.latitude, clientRequest.longitude, "N") < closestDist){
-                        closestDist = distance(matches[i].latitude, matches[i].longitude, clientRequest.latitude, clientRequest.longitude, "N")
-                        bestMatch = matches[i]
-                    }
+           if (distance(matches[i].latitude, matches[i].longitude, clientRequest.latitude, clientRequest.longitude, "N") <= closestDist){
+                closestDist = distance(matches[i].latitude, matches[i].longitude, clientRequest.latitude, clientRequest.longitude, "N")
+                bestMatch = matches[i]
+
+                // GET best matches if same service, close distance and closest time duration
+                if (duration(matches[i].created_at, clientRequest.created_at)< closestDuration){
+                    closestDuration = duration(matches[i].created_at, clientRequest.created_at)
+                    veryBestMatch = matches[i]
+
                 }
+            }
+                
         }
         bestMatchArr.push(bestMatch)
+        veryBestMatchArr.push(veryBestMatch)
     }
-    
-
     
     console.log('matches', matches)
     console.log('bestMatchArr', bestMatchArr)
+    console.log('veryBestMatchArr', veryBestMatchArr)
 
     return (
         <div></div>
