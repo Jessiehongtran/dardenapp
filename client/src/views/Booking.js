@@ -3,11 +3,12 @@ import '../styles/Booking.scss';
 import {withFormik, Form, Field} from 'formik';
 import LocationField from '../components/LocationField';
 import axios from 'axios';
-import {connect} from 'react-redux';
-import {getBookingInfo} from '../actions/index';
+// import {connect} from 'react-redux';
+// import {getBookingInfo} from '../actions/index';
+import * as Yup from "yup";
 
 
-const Booking = () => {
+const Booking = ({errors}) => {
     const [serviceClicked, setServiceClicked] = useState({})
 
     const id = localStorage.getItem('serviceId')
@@ -32,12 +33,20 @@ const Booking = () => {
             <Form className="form">
                 <button className="book-btn">Book</button>
                 <div className="work-info">
-                    <Field className="input" type="text" name="units" placeholder="Apt/Unit #"/>
-                    <Field className="input" type="text" name="hours" placeholder="# Hours"/>
-                    <Field className="input" type="text" name="price" placeholder="$ Price/hour: 0.00"/>
+                    <div className="info">
+                        <Field className="input" type="text" name="units" placeholder="Apt/Unit #"/>
+                    </div>
+                    <div className="info">
+                        <Field className="input" type="text" name="hours" placeholder="# Hours"/>
+                        {errors.hours && <p className="error-message">{errors.hours}</p>}
+                    </div>
+                    <div className="info">
+                        <Field className="input" type="text" name="price" placeholder="$ Price/hour: 0.00"/>
+                        {errors.price && <p className="error-message">{errors.price}</p>}
+                    </div>
                 </div>
                 <Field name="location" component={LocationField}/>
-                
+               
             </Form>
         </div>
     )
@@ -46,13 +55,23 @@ const Booking = () => {
 const FormikBooking = withFormik({
     mapPropsToValues({location, address, units, hours, price}){
         return {
-            location: location || "",
             address: address || "",
             units: units || "",
             hours: hours || "",
             price: price || ""
         };
     },
+
+    validationSchema: Yup.object().shape({
+        address: Yup.string()
+                    .required(),
+        hours: Yup.number()
+                  .required()
+                  .positive(),
+        price: Yup.number()
+                  .required()
+                  .positive()
+    }),
 
     handleSubmit(values, {props}){
         props.setBookingInfo(values)
@@ -62,17 +81,19 @@ const FormikBooking = withFormik({
 
 })(Booking)
 
+export default FormikBooking;
 
-const mapStateToProps = state => {
-    console.log('state in Booking', state)
-    return {
-        isLoading: state.isLoading,
-        bookingInfo: state.bookingInfo,
-        error: state.error
-    }
-}
+// const mapStateToProps = state => {
+//     console.log('state in Booking', state)
+//     return {
+//         isLoading: state.isLoading,
+//         bookingInfo: state.bookingInfo,
+//         error: state.error
+//     }
+// }
 
-export default connect(
-    mapStateToProps,
-    {getBookingInfo}
-)(FormikBooking);
+// export default connect(
+//     mapStateToProps,
+//     {getBookingInfo}
+// )(
+// FormikBooking);
