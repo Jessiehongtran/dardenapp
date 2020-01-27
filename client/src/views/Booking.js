@@ -55,7 +55,7 @@ const Booking = ({errors}) => {
 }
 
 const FormikBooking = withFormik({
-    mapPropsToValues({location, address, units, hours, price}){
+    mapPropsToValues({address, units, hours, price}){
         return {
             address: address || "",
             units: units || "",

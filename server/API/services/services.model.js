@@ -19,7 +19,7 @@ function getServiceById(id){
 
 function addService(service){
     return db("services")
-            .returning("service_id")
+            .returning("id")
             .insert(service)
             .then(ids => {return {id: ids[0]}})
 }
