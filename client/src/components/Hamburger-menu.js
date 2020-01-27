@@ -32,10 +32,10 @@ const Menu = props => {
         <div className="intro">
           <img
             className="avatar"
-            src="https://res.cloudinary.com/dfulxq7so/image/upload/v1578598566/3ca14bfe2471e504eb115db7a2ff9a91_ll041q.jpg"
+            src="https://res.cloudinary.com/dfulxq7so/image/upload/v1580147319/256-512_j8yli6.png"
             alt="avatar"
           />
-          <p className="name">Rodrigo Perez</p>
+          <p className="name">Coming soon</p>
           <span className="span"></span>
         </div>
         <div className="overlay-content-map">

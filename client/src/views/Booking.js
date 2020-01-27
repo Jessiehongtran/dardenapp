@@ -41,7 +41,7 @@ const Booking = ({errors}) => {
                         {errors.hours && <p className="error-message">{errors.hours}</p>}
                     </div>
                     <div className="info">
-                        <Field className="input" type="text" name="price" placeholder="$ Price/hour: 0.00"/>
+                        <Field className="input" type="text" name="price" placeholder="$ Pay/hour: 0.00"/>
                         {errors.price && <p className="error-message">{errors.price}</p>}
                     </div>
                 </div>
