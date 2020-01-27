@@ -13,7 +13,7 @@ function getSubServiceById(id){
 
 function addSubService(subService){
     return db("subService")
-            .returning("id")
+            .returning("subService_id")
             .insert(subService)
             .then(ids => {return {id: ids[0]}})
 }
