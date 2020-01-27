@@ -19,7 +19,7 @@ router.get('/:id', (req, res) => {
     Requests.getRequestById({request_id: id})
             .then(response => {
                 console.log('response in getRequestById', response)
-                res.status(200).json(response)
+                res.status(200).json(response[0])
             })
             .catch(err => {
                 res.status(500).json(err.message)
