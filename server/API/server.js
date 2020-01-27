@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 
 const clientRouter = require('./user_client/client.router');
 const servicesRouter = require('./services/services.router');
+const subServiceRouter = require('./services/subService.router');
 const requestRouter = require('./request_client/request.router');
 const paymentRouter = require('./payment/payment.router');
 const dardieRouter = require('./user_dardie/dardie.router');
@@ -16,6 +17,7 @@ server.use(cors());
 server.use(express.static(path.join(__dirname, '../build')))
 server.use('/api/clients', clientRouter);
 server.use('/api/services', servicesRouter);
+server.use('/api/services/subService', subServiceRouter);
 server.use('/api/requests', requestRouter);
 server.use('/api/stripe/charge', paymentRouter);
 server.use('/api/dardies', dardieRouter);
