@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Route, Switch } from "react-router-dom";
 import './App.css';
 import Home from './views/Home';
+import Details from './views/Details';
 import Booking from './views/Booking';
 import UserVerify from './views/UserVerify';
 import Summary from './views/Summary';
@@ -23,6 +24,17 @@ function App() {
               return (
                 <Home 
                   {...props}
+                />
+              )}}
+        />
+        <Route 
+          exact path="/details" 
+          render = {
+            props => {
+              return (
+                <Details 
+                  {...props}
+                 
                 />
               )}}
         />

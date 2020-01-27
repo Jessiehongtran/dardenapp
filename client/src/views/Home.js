@@ -32,8 +32,12 @@ const Home = (props) => {
                                 key= {service.id}
                                 className="each-service" 
                                 onClick={() => {
-                                props.history.push('/role')
-                                // props.setServiceChosen(service)
+                                if (service.service_name == "Anything Else" || service.service_name == "Tutoring" )
+                                {
+                                    props.history.push('/details')
+                                } else {
+                                    props.history.push('/role')
+                                }
                                 localStorage.setItem('serviceId', service.id)
                                 }
                                 }>
