@@ -45,7 +45,9 @@ const Booking = ({errors}) => {
                         {errors.price && <p className="error-message">{errors.price}</p>}
                     </div>
                 </div>
-                <Field name="location" component={LocationField}/>
+                <div className="booking-address">
+                    <Field name="location" component={LocationField}/>
+                </div>
                
             </Form>
         </div>
