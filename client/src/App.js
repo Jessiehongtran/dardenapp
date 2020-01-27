@@ -9,6 +9,7 @@ import Summary from './views/Summary';
 import Checkout from './views/Checkout';
 import Role from './views/Role';
 import Servicing from './views/Servicing';
+import Matching from './views/Matching';
 
 function App() {
   const [bookingInfo, setBookingInfo] = useState({})
@@ -89,6 +90,16 @@ function App() {
                 <Summary
                   {...props}
                   bookingInfo = {bookingInfo}
+                />
+              )}}
+        />
+        <Route 
+          exact path="/matching" 
+          render = {
+            props => {
+              return (
+                <Matching
+                  {...props}
                 />
               )}}
         />
