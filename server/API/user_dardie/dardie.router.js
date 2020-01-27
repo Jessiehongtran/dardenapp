@@ -25,9 +25,9 @@ router.get('/:id', (req, res) => {
 })
 
 // GET dardies by serviceId
-router.get('/serviceId/:serviceId', (req, res) => {
-    const {serviceId} = req.params
-    Dardies.getDardiesByServiceId(serviceId)
+router.get('/serviceId/:id', (req, res) => {
+    const {id} = req.params
+    Dardies.getDardiesByServiceId(id)
             .then(dardies => {
                 res.status(200).json(dardies)
             })

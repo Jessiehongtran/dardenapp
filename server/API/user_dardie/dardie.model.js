@@ -20,8 +20,9 @@ function getDardieById(id){
 }
 
 function getDardiesByServiceId(id){
-    return db("services")
-            .where({})
+    return db("user_dardie")
+            .where("user_dardie.service_id", id)
+            
 }
 
 function addDardie(dardie){

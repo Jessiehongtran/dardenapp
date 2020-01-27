@@ -5,7 +5,7 @@ exports.up = function(knex) {
         column
             .integer("service_id")
             .unsigned()
-            .references("service_id")
+            .references("id")
             .inTable("services")
             .onDelete("RESTRICT")
             .onDelete("RESTRICT")
