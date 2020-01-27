@@ -7,7 +7,7 @@ function findAll(){
             .join("user_client", "user_client.id", "request_client.user_id")
             .select(
                 "user_client.email", 
-                "services.service_name", 
+                "services.*", 
                 "request_client.unit",
                 "request_client.hours",
                 "request_client.address",
@@ -32,7 +32,7 @@ function getRequestById(id){
             .join("user_client", "user_client.id", "request_client.user_id")
             .select(
                 "user_client.email", 
-                "services.service_name", 
+                "services.*", 
                 "request_client.unit",
                 "request_client.hours",
                 "request_client.address",
