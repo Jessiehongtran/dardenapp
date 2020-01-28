@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import '../styles/Matching.scss'
 
 const Matching = (props) => {
     const [clientRequest, setClientRequest] = useState({});
@@ -108,9 +109,10 @@ const Matching = (props) => {
 
     else {
         return (
-            <div>
-                <h2>We have not found any dardie matching with your request at this moment, our team will be in touch with you.</h2>
-                <Link to="/">Home</Link>
+            <div className="no-match">
+                <h2>:(</h2>
+                <h3>We have not found any dardie matching with your request at this moment, our team will be in touch with you.</h3>
+                <Link to="/" className="link-to">Home</Link>
             </div>
         )
     }
@@ -121,23 +123,32 @@ const Matching = (props) => {
 
     return (
         <div>
-            <div className="best-match">
-                <p>Best match</p>
+            <div className="match">
+                <p className="title">Best match</p>
                 <h2>We found a dardie close to you</h2>
                 <p>Name: {bestMatchArr[0].name}</p>
                 <p>Address: {bestMatchArr[0].address}</p>
+                <p className="note">Our team will connect them with you</p>
+                <button
+                className="proceed-btn"
+                onClick={() => props.history.push('/checkout')}
+                >
+                Proceed
+            </button>
             </div>
-            <div className="best-match">
-                <p>Very best match</p>
+            <div className="match">
+                <p className="title">Very best match</p>
                 <h2>We found a dardie close to you and have been active recently</h2>
                 <p>Name: {veryBestMatchArr[0].name}</p>
                 <p>Address: {veryBestMatchArr[0].address}</p>
-            </div>
-            <button
+                <p className="note">Our team will connect them with you</p>
+                <button
+                className="proceed-btn"
                 onClick={() => props.history.push('/checkout')}
-            >
-                Proceed to payment
+                >
+                Proceed 
             </button>
+            </div>
         </div>
     )
     

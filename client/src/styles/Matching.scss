@@ -1,0 +1,58 @@
+.no-match {
+    background-color: #FFFFFF;
+    width: 400px;
+    height: 300px;
+    border-radius: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 16%;
+    padding: 60px 20px 20px 20px;
+
+    h2, h3 {
+        color: #FF6666;
+    }
+
+    .link-to {
+        text-decoration-color: black;
+        color: black;
+        font-size: 24px;
+    }
+}
+
+.match {
+    background-color: #FFFFFF;
+    width: 400px;
+    height: 300px;
+    border-radius: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6%;
+    padding: 20px;
+
+    h2 {
+        color: #FF6666;
+    }
+
+    .title {
+        font-size: 28px;
+        color: gray;
+        font-weight: bold;
+    }
+
+    .note {
+        font-size: 14px;
+        font-style: italic;
+        color: gray
+    }
+
+    .proceed-btn {
+        background-color: #FF6666;
+        width: 30%;
+        color: white;
+        font-size: 16px;
+        height: 34px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+    }
+}
