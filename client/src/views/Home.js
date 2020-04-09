@@ -25,35 +25,38 @@ const Home = (props) => {
             <Menu />
             <div className="home-center">
                 <img className="banner" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1578436889/asasdasd_ls3sll.png" alt="banner"/>
-                <div className="services">
-                    {services.map(service => {
-                        return (
-                            <div 
-                                key= {service.id}
-                                className="each-service" 
-                                onClick={() => {
-                                if (service.service_name == "Anything Else" || service.service_name == "Tutoring" )
-                                {
-                                    props.history.push('/details')
-                                } else {
-                                    props.history.push('/role')
-                                }
-                                localStorage.setItem('serviceId', service.id)
-                                }
-                                }>
-                                <div className="icon">
-                                    <img id="cleaning-icon" src={service.service_icon} alt="icon"/>
-                            </div>
-                            <div className="text">
-                                <p>{service.service_name}</p>
-                            </div>
-                            </div>
-                        )
-                    })}
-                </div>
+                {services? 
+                    <div className="services">
+                        {services.map(service => {
+                            return (
+                                <div 
+                                    key= {service.id}
+                                    className="each-service" 
+                                    onClick={() => {
+                                    if (service.service_name == "Anything Else" || service.service_name == "Tutoring" )
+                                    {
+                                        props.history.push('/details')
+                                    } else {
+                                        props.history.push('/role')
+                                    }
+                                    localStorage.setItem('serviceId', service.id)
+                                    }
+                                    }>
+                                    <div className="icon">
+                                        <img id="cleaning-icon" src={service.service_icon} alt="icon"/>
+                                </div>
+                                <div className="text">
+                                    <p>{service.service_name}</p>
+                                </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                : <div class="loader"></div>}
             </div>
         </div>
     )
+                
 }
 
 export default Home;
