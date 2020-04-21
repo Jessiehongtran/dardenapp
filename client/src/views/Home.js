@@ -25,7 +25,7 @@ const Home = (props) => {
             <Menu />
             <div className="home-center">
                 <img className="banner" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1578436889/asasdasd_ls3sll.png" alt="banner"/>
-                {services? 
+                {services.length > 0? 
                     <div className="services">
                         {services.map(service => {
                             return (
