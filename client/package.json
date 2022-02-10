@@ -13,7 +13,7 @@
     "formik": "^2.1.1",
     "google-maps-react": "^2.0.2",
     "history": "^4.10.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "parcel": "^1.12.4",
     "parcel-bundler": "^1.12.4",
     "react": "^16.12.0",
