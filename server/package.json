@@ -22,7 +22,7 @@
     "express": "^4.17.1",
     "express-router": "0.0.1",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.20.8",
+    "knex": "^2.4.0",
     "parcel": "^1.12.4",
     "pg": "^7.17.1",
     "sqlite3": "^4.1.1",
